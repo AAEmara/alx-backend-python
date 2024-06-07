@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """A module that defines sum_list() function using type-annotations."""
 
+import typing
 
-def sum_list(input_list: list[float]) -> float:
+
+def sum_list(input_list: typing.List[float]) -> float:
     """Returns the sum of numbers in a list.
 
     Args:
