@@ -7,7 +7,7 @@ import typing
 
 
 async def wait_random(max_delay: typing.Union[int, float] = 10)\
-        -> typing.Union[int, float]:
+        -> float:
     """Asynchronous coroutine that wait for random delay and
     returns its value.
 
