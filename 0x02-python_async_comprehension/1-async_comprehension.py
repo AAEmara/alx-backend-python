@@ -2,12 +2,12 @@
 """A module that defines a coroutine."""
 
 import asyncio
-from typing import Generator, List
+from typing import Coroutine, List
 
 async_generator = __import__("0-async_generator").async_generator
 
 
-async def async_comprehension() -> Generator[float, None, None]:
+async def async_comprehension() -> Coroutine[None, None, List]:
     """Uses a coroutine to return 10 random numbers from it.
 
     Args:
