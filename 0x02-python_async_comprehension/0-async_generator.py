@@ -6,7 +6,7 @@ import random
 import typing
 
 
-async def async_generator() -> float:
+async def async_generator() -> typing.Generator[float, None, None]:
     """Generates a list of random numbers asynchronously.
 
     Args:
