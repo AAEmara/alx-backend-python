@@ -3,11 +3,9 @@
 
 import asyncio
 import random
-import typing
 
 
-async def wait_random(max_delay: typing.Union[int, float] = 10)\
-        -> float:
+async def wait_random(max_delay: int = 10) -> float:
     """Asynchronous coroutine that wait for random delay and
     returns its value.
 
