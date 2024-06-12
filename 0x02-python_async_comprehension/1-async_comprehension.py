@@ -7,7 +7,7 @@ from typing import Coroutine, List
 async_generator = __import__("0-async_generator").async_generator
 
 
-async def async_comprehension() -> Coroutine[None, None, List]:
+async def async_comprehension() -> Coroutine[None, None, List[float]]:
     """Uses a coroutine to return 10 random numbers from it.
 
     Args:
