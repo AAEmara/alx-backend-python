@@ -16,5 +16,6 @@ async def async_comprehension() -> Coroutine[None, None, List[float]]:
     Returns:
         A list of 10 random numbers.
     """
-    results = [i async for i in async_generator()]
+    results: Coroutine[None, None, List[float]] = [i async
+                                                   for i in async_generator()]
     return (results)
