@@ -4,7 +4,7 @@
 
 from client import GithubOrgClient
 from parameterized import parameterized
-from typing import Dict
+from typing import Dict, Callable
 import unittest
 from unittest.mock import patch
 
