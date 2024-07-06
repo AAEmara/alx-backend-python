@@ -14,8 +14,8 @@ class TestGithubOrgClient(unittest.TestCase):
     """
 
     @parameterized.expand([
-        ["google", {"payload": True}],
-        ["abc", {"payload": False}]
+        ("google", {"payload": True}),
+        ("abc", {"payload": False})
     ])
     @patch("client.get_json")
     def test_org(self, org: str, result: Dict, mock_get_json: Callable):
