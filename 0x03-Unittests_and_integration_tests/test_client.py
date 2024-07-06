@@ -14,20 +14,20 @@ class TestGithubOrgClient(unittest.TestCase):
     """
 
     @parameterized.expand([
-        ["google", "https://api.github.com/orgs/google"],
-        ["abc", "https://api.github.com/orgs/abc"]
+        ("google", "https://api.github.com/orgs/google"),
+        ("abc", "https://api.github.com/orgs/abc")
     ])
     @patch("client.get_json")
-    def test_org(self, org: str, url: str, mock_get_json: Mock) -> None:
+    def test_org(self, org: str, arg: str, mock_org: Mock) -> None:
         """Testing the `GithubOrgClient.org` returned value.
         Args:
             org: The name of the organization used in GitHub.
             url: The expected payload returned result.
-            mock_get_json: The mocked function used in the method.
+            mock_org: The mocked function used in the method.
         """
-        instance = GithubOrgClient(org)
-        result1 = instance.org
-        result2 = instance.org
-        result3 = instance.org
+        git_client = GithubOrgClient(org)
+        org_resp_mock = git_client.org
+        org_resp_mock = git_client.org
+        org_resp_mock = git_client.org
 
-        mock_get_json.assert_called_once_with(url)
+        mock_org.assert_called_once_with(arg)
