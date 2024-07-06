@@ -25,9 +25,11 @@ class TestGithubOrgClient(unittest.TestCase):
             expected_result: The expected payload returned result.
             mock_get: The mocked function used in the method.
         """
-        test_instance = GithubOrgClient(org)
-        url: str = f"https://api.github.com/orgs/{org}"
-        mock_get.return_value: Dict = result
-        test_result: Dict = test_instance.org
-        mock_get.assert_called_once_with(url)
+        test_instance = GithubOrgClient(org)  # Instance of the class.
+        url = f"https://api.github.com/orgs/{org}"
+
+        # Assigning the return value of the mocked method.
+        mock_get.return_value = MagicMock(return_value=result)
+        test_result = test_instance.org()
+        mock_get.assert_called_once_with(url)  # Checking the call is done once
         self.assertEqual(test_result, result)
