@@ -6,7 +6,7 @@ from client import GithubOrgClient
 from parameterized import parameterized
 from typing import Dict, Callable
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -18,7 +18,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ("abc", {"payload": False})
     ])
     @patch("client.get_json")
-    def test_org(self, org: str, result: Dict, mock_get_json: Callable):
+    def test_org(self, org: str, result: Dict, mock_get_json: Mock):
         """Testing the `GithubOrgClient.org` returned value.
         Args:
             org_name: The name of the organization used in GitHub.
