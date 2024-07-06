@@ -7,7 +7,6 @@ from parameterized import parameterized
 from typing import Dict
 import unittest
 from unittest.mock import patch
-import utils
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -24,6 +23,10 @@ class TestGithubOrgClient(unittest.TestCase):
                  expected_result: Dict,
                  mock_get_json: Callable):
         """Testing the `GithubOrgClient.org` returned value.
+        Args:
+            org_name: The name of the organization used in GitHub.
+            expected_result: The expected payload returned result.
+            mock_get_json: The mocked function used in the method.
         """
         test_instance = GithubOrgClient(org_name)
         url: str = f"https://api.github.com/orgs/{org_name}"
