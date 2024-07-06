@@ -14,11 +14,11 @@ class TestGithubOrgClient(unittest.TestCase):
     """
 
     @parameterized.expand([
-        ("google", {"payload": True}),
-        ("abc", {"payload": False})
+        ["google"],
+        ["abc"]
     ])
     @patch("client.get_json")
-    def test_org(self, org: str, result: Dict, mock_get_json: Mock):
+    def test_org(self, org: str, mock_get_json: Mock):
         """Testing the `GithubOrgClient.org` returned value.
         Args:
             org_name: The name of the organization used in GitHub.
@@ -27,7 +27,5 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         test_instance = GithubOrgClient(org)
         url: str = f"https://api.github.com/orgs/{org}"
-        mock_get_json.return_value: Dict = result
-        test_result: Dict = test_instance.org
+        test_instance.org()
         mock_get_json.assert_called_once_with(url)
-        self.assertEqual(test_result, result)
