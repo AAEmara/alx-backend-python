@@ -18,7 +18,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ("abc", "https://api.github.com/orgs/abc")
     ])
     @patch("client.get_json")
-    def test_org(self, org: str, arg: str, mock_org: Mock) -> None:
+    def test_org(self, org, arg, mock_org):
         """Testing the `GithubOrgClient.org` returned value.
         Args:
             org: The name of the organization used in GitHub.
