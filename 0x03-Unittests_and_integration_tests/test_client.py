@@ -6,7 +6,7 @@ from client import GithubOrgClient
 from parameterized import parameterized
 from typing import Dict
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, PropertyMock
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -31,3 +31,16 @@ class TestGithubOrgClient(unittest.TestCase):
         test_result: Dict = test_instance.org
         mock_get.assert_called_once_with(url)
         self.assertEqual(test_result, result)
+
+    def test_public_repos_url(self):
+        """Testing the `GithubOrgClient._public_repos_url` returned value.
+        """
+        payload = {"repos_url": "https://api.github.com/google"}  # API Payload
+        # Mocking the GithubOrgClient.org method.
+        with patch.object(GithubOrgClient, "org") as mock_org:
+            mock_org.return_value = payload  # Assigning returned payload.
+            org_instance = GithubOrgClient("google")
+            expected_repo_url = org_instance.org["repos_url"]  # Expected URL
+            tested_repo_url = org_instance._public_repos_url  # Returned URL
+            # Testing the returned url vs the expected url.
+            self.assertEqual(tested_repo_url, expected_repo_url)
